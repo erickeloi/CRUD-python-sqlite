@@ -18,7 +18,9 @@ def commit_close(operacao):
         cursor.execute(sql)
         banco.commit()
         banco.close()
+
     return decorator
+
 
 # sql_command = """CREATE TABLE Empresas (cnpj integer not null primary key, nome text,
 # atividade_principal text, atividades_secundarias,
@@ -56,7 +58,8 @@ def read_all_info_db():
 
 def show_all_db_info():
     dados = read_all_info_db()
-    all_db_atributes_styled = ["CNPJ:", "Nome:", "Atividade Principal:\n", "Atividades Secundarias:\n", "UF:", "Telefone:", "Email:", "Data de Abertura:"]
+    all_db_atributes_styled = ["CNPJ:", "Nome:", "Atividade Principal:\n", "Atividades Secundarias:\n", "UF:",
+                               "Telefone:", "Email:", "Data de Abertura:"]
     for dado in dados:
         for index, info in enumerate(dado):
             if index == 2 or index == 3:
@@ -93,4 +96,67 @@ def show_relevant_info_db():
             else:
                 print(f"{relevant_db_atributes_styled[index]} {info}")
         print("--- fim da ficha ---\n")
+
+
+def find_one_specific_company(cnpj):
+    banco = sqlite3.connect('empresas.db')
+    cursor = banco.cursor()
+    sql = f"SELECT * FROM Empresas WHERE cnpj = '{cnpj}'"
+    cursor.execute(sql)
+    dados = cursor.fetchall()
+    banco.close()
+    return dados
+
+
+def show_one_specific_company(cnpj):
+    dados = find_one_specific_company(cnpj)
+    if dados:
+        print("\nEmpresa Encontrada!\n")
+        all_db_atributes_styled = ["CNPJ:", "Nome:", "Atividade Principal:\n", "Atividades Secundarias:\n", "UF:",
+                                   "Telefone:", "Email:", "Data de Abertura:"]
+        for dado in dados:
+            for index, info in enumerate(dado):
+                if index == 2 or index == 3:
+                    print(f"{all_db_atributes_styled[index]} {info}\n")
+                else:
+                    print(f"{all_db_atributes_styled[index]} {info}")
+            print("--- fim da ficha ----\n")
+
+    else:
+        print("Empresa não Cadastrada | Não Encontrada!")
+
+
+def name_of_one_company_db(cnpj):
+    banco = sqlite3.connect('empresas.db')
+    cursor = banco.cursor()
+    sql = f"SELECT nome FROM Empresas WHERE cnpj = '{cnpj}'"
+    cursor.execute(sql)
+    dados = cursor.fetchall()
+    banco.close()
+    return dados
+
+
+def all_company_names_db():
+    banco = sqlite3.connect('empresas.db')
+    cursor = banco.cursor()
+    sql = f"SELECT cnpj, nome FROM 'Empresas'"
+    cursor.execute(sql)
+    dados = cursor.fetchall()
+    banco.close()
+    return dados
+
+
+def show_all_company_names():
+    dados = all_company_names_db()
+    if dados:
+        print("Busca Realizada Com Sucesso!")
+        print("Empresas Cadastradas:\n")
+
+        for index, dado in dados:
+            print(f"CNPJ: {index}")
+            print(f"Nome: {dado}\n")
+        print("Anote o CNPJ da Empresa que deseja Fazer uma Operação Específica!!!\n")
+    else:
+        print("Erro! Banco de Dados Vazio | Empresas Não encontradas")
+
 

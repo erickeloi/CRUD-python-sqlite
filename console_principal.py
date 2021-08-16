@@ -1,6 +1,5 @@
 import requests
 import backoff
-from dml import *
 from menu import *
 
 
@@ -83,6 +82,15 @@ while True:
         continuar()
     elif response == 4:
         show_all_db_info()
+        continuar()
+    elif response == 5:
+        atualizar_info_menu()
+        continuar()
+    elif response == 6:
+        exclusao_de_empresa_menu()
+        continuar()
+    elif response == 7:
+        buscar_empresa_pelo_cnpj_menu()
         continuar()
     elif response == 10:
         show_relevant_info_db()
