@@ -19,6 +19,6 @@ python -m pip install -r requeriments.txt
 ![image](https://user-images.githubusercontent.com/65841249/129641603-ef4de5f5-75b5-4a2b-bfd8-5ba87e3254eb.png)
 
 ## Foto do Diagrama feito no 'dia':
-##![Empresa - Diagrama pro banco de dados](https://user-images.githubusercontent.com/65841249/129641690-7de63dfb-5cc8-45db-957f-5433f7a47ceb.png)
+![Empresa - Diagrama pro banco de dados](https://user-images.githubusercontent.com/65841249/129641690-7de63dfb-5cc8-45db-957f-5433f7a47ceb.png)
 
 
