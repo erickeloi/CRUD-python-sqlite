@@ -1,7 +1,7 @@
 # Como executar o console em uma máquina Linux?
 
  - Primeiro, é necessário ter o [python 3.9](https://www.python.org/downloads/) instalado
- - Após isso, você pode instalar as outras dependencias de forma facilitada com o pip com os comandos:
+ - Após isso, você pode instalar as outras dependencias de forma facilitada no terminal, com o pip, com os comandos:
  ```commandline
 pip install requests
 pip install backoff
