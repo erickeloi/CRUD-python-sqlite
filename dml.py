@@ -23,8 +23,8 @@ def commit_close(operacao):
 
 
 # sql_command = """CREATE TABLE Empresas (cnpj integer not null primary key, nome text,
-# atividade_principal text, atividades_secundarias,
-# uf text , telefone text, email text, abertura text)"""
+# atividade_principal text not null, atividades_secundarias,
+# uf text not null, telefone text, email text, abertura text not null)"""
 
 @commit_close
 def insert_db(cnpj: int or str, nome: str, atividade_principal: str, atividades_secundarias,
